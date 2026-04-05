@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://snayder:Snayder123@cluster0.1jsaw0p.mongodb.net/aej_db
+
+rapidapi:
+  key: 30ca201928mshaef760126b3b066p131013jsna1267452c6a8
+  chatgpt:
+    host: open-ai21.p.rapidapi.com
+    url: https://open-ai21.p.rapidapi.com/conversationllama
+  translator:
+    host: deep-translate1.p.rapidapi.com
+    url: https://deep-translate1.p.rapidapi.com/language/translate/v2
