@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snayder-vicente-42-deployment
+  namespace: snayder-vicente-42-namespace
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: snayder-vicente-42-deployment
+  template:
+    metadata:
+      labels:
+        app: snayder-vicente-42-deployment
+    spec:
+      containers:
+      - name: snayder-vicente-42-container
+        image: snaydervicente/aej42-be:1.0
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - secretRef:
+            name: snayder-vicente-42-secret
