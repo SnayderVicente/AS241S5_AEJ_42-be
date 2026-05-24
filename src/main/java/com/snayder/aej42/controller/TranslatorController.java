@@ -29,4 +29,17 @@ public class TranslatorController {
     public Flux<ApiResult> getAll() {
         return repository.findByApiType("translator");
     }
+
+    @PutMapping("/{id}")
+    public Mono<ApiResult> update(@PathVariable String id, @RequestBody Map<String, String> body) {
+        return repository.findById(id)
+            .flatMap(existing -> {
+                return service.translate(body.get("text"), body.get("target") != null ? body.get("target") : "en");
+            });
+    }
+
+    @DeleteMapping("/{id}")
+    public Mono<Void> delete(@PathVariable String id) {
+        return repository.deleteById(id);
+    }
 }

@@ -29,4 +29,17 @@ public class ChatController {
     public Flux<ApiResult> getAll() {
         return repository.findByApiType("chatgpt");
     }
+
+    @PutMapping("/{id}")
+    public Mono<ApiResult> update(@PathVariable String id, @RequestBody Map<String, String> body) {
+        return repository.findById(id)
+            .flatMap(existing -> {
+                return service.chat(body.get("message"));
+            });
+    }
+
+    @DeleteMapping("/{id}")
+    public Mono<Void> delete(@PathVariable String id) {
+        return repository.deleteById(id);
+    }
 }
